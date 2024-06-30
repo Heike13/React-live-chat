@@ -1,0 +1,184 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+#messages {
+  // 80% of VP height
+  width: 100%;
+  height: 90vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  /* width */
+&::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 2rem;
+}
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+}
+
+}
+
+.form {
+  height: 10vh;
+
+  display : flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 2rem;
+
+
+
+    background-color: $secondary-color;
+    display: flex;
+  
+    &__input {
+      background-color: $primary-color;
+      height: 3rem;
+      flex-grow: 1;
+      border: none;
+      padding: 0 1rem;
+      border-radius: 1rem;
+      }
+      
+      &__button {
+      background-color: $primary-color;
+      border: 0;
+      width : 3rem;
+      height: 3rem;
+      border-radius: 2rem;
+      display: flex;
+      padding: 0 0 3px 0;
+      align-items: center;
+      justify-content: center;
+      color: $text-color;
+    }
+}
+
+// Animation when popping 
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  } to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.message {
+  animation: pop 500ms ease-in-out forwards;
+  width: fit-content;
+  height: 5rem;
+  background-color: $secondary-color;
+  color: $text-color;
+  border-radius: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 2rem;
+  gap: 1rem;
+
+  &__author, &__content {
+    margin: 0;
+  }
+
+  &--notself {
+    align-items: flex-start;
+    margin: 1rem auto 1rem 1rem;
+    text-align: left;
+    &::before {
+      content:"";
+      position: absolute;
+      left: 2px;
+      bottom: 0;
+    
+      border-bottom: 10px solid $secondary-color;
+      border-left: 10px solid transparent; 
+      border-top: 10px solid transparent; 
+      border-right: 10px solid transparent;
+    }
+  }
+
+  &--self {
+    align-items: flex-end;
+    margin: 1rem 1rem 1rem auto;
+    text-align: right;
+    &::before {
+      content:"";
+      position: absolute;
+      right: 2px;
+      bottom: 0;
+    
+      border-bottom: 10px solid $secondary-color;
+      border-left: 10px solid transparent; 
+      border-top: 10px solid transparent; 
+      border-right: 10px solid transparent;
+    }
+  }
+}
+
+
+// SETTINGS FORM
+.login {
+  z-index: 10;
+  position: fixed;
+  top: 1rem;
+  left: -30rem;
+  translate: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: $secondary-color;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  transition: all 200ms ease-in-out;
+
+  .login__toggle {
+    color: black;
+  }
+
+  &:hover {
+    .login__toggle {
+      scale: 1.1;
+      color: black;
+    }
+  }
+  &--open {
+    right: 1rem;
+    translate: -305%;
+    left: 120rem;
+
+    .login__toggle {
+      rotate: 0deg;
+    }
+  }
+  &__email, &__password {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: $primary-color;
+  }
+  &__toggle {
+    transition: all 200ms ease-in-out;
+    rotate: 135deg;
+    position: absolute;
+    right: -5rem;
+    top: 1rem;
+    background-color: $secondary-color;
+    border-radius: 3rem;
+    padding: .5rem .6rem .6rem .6rem;
+  }
+ }
