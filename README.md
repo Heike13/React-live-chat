@@ -1,16 +1,21 @@
 # React-live-chat
 
 Vite + React + TS + Socket.io
-
-
 ________
 
-- To install the front packages
+## What is needed 
+
+- NPM (PNPM)
+- Node.js
+
+----
+
+- Front install
 ```bash
 pnpm i
 ```
 
-- To install the server : go to 
+- Back install
 ```bash
 cd chatroom-server
 pnpm i
